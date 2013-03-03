@@ -86,11 +86,14 @@ def facebookDownload(userid):
 	 			print "\t\tEmpty Album " + album['name']
  		else:
  			print "\t\tCreating New Album..." + album['name']
- 			os.mkdir(pathAlbum)
- 			for photo in album['photos']['data']:
- 				pathPhoto=pathAlbum + "/" + photo['id'] + ".jpg"
- 				print "\t\tDownloading...", photo['id']
- 				downloadPhoto(photo['source'],pathPhoto)
+ 			try:
+	 			os.mkdir(pathAlbum)
+	 			for photo in album['photos']['data']:
+	 				pathPhoto=pathAlbum + "/" + photo['id'] + ".jpg"
+	 				print "\t\tDownloading...", photo['id']
+	 				downloadPhoto(photo['source'],pathPhoto)
+	 		except:
+	 			print "\t\tSome Problem in album name : " + album['name']
 
 
 #facebookDownload('mayank127')
